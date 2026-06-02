@@ -29,7 +29,7 @@ function buildTodoCard(todo) {
   const footer = document.createElement("div");
   const date = document.createElement("p");
   const currentDate = new Date();
-  date.textContent = currentDate.toLocaleTimeString([], {
+  date.textContent = currentDate.toLocaleString([], {
     hour: "2-digits",
     minute: "2-digits"});
   footer.appendChild(date);
