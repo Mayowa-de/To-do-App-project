@@ -10,7 +10,6 @@ A modern task management application built with HTML, CSS and JavaScript.
 - Complete Tasks
 - Search Tasks
 - Filter Tasks
-- Dark Mode
 - Local Storage
 
 ## Technologies
