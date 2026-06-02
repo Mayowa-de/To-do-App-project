@@ -16,6 +16,13 @@
   #add-button {
     width: 100%;
   }
+  #add-button:focus {
+  outline: none;
+}
+
+#add-button:active {
+  scale: 100%;
+}
   section{
     width: 100%;
     height: auto;
