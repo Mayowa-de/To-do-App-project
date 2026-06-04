@@ -27,7 +27,7 @@ function buildTodoCard(todo) {
   deleteIcon.addEventListener("click", () => {
     deleteItem(todo);
     cardDiv.remove();
-       showEmptyState();
+
   });
 
   // add div element to hold the date
@@ -73,20 +73,11 @@ function showInputMessage() {
   }
 }
 
-// Empty state UI
-// export function renderEmptyState() {
-//   if (!container) return;
-//   if (document.getElementById("empty-state")) return;
-//   const el = document.createElement("div");
-//   el.id = "empty-state";
-//   el.classList.add("empty-state");
-//   el.innerHTML = `<p>No tasks yet — add your first task</p>`;
-//   container.appendChild(el);
-// }
 
 export function removeEmptyState() {
   const existing = document.getElementById("empty-state");
   if (existing) existing.remove();
+
 }
 
 //show empty state
@@ -128,6 +119,8 @@ export function createElement() {
  
 
 }
+
+
 
 // Load and display todos on page load
 window.addEventListener("DOMContentLoaded", () => {

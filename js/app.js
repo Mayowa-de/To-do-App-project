@@ -1,4 +1,4 @@
-import { createElement } from "./ui.js"
+import { createElement, removeEmptyState } from "./ui.js"
 
 const addButton = document.getElementById("add-button")
 
