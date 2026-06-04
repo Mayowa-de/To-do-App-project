@@ -45,11 +45,11 @@ function buildTodoCard(todo) {
 
 
 // function to show an error message when the input is empty
-export function showInputMessage() {
+function showInputMessage() {
   const errorMessage = document.getElementById("error-message") || document.createElement("div");
   errorMessage.id = "error-message";
   errorMessage.classList.add("error-message");
-  errorMessage.textContent = "Input is empty";
+  errorMessage.textContent = "Please add a task ";
   errorMessage.style.display = "flex";
 
   const icon = document.createElement("span");

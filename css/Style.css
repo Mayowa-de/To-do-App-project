@@ -58,7 +58,7 @@ input:focus::after {
   border-radius: 10px;
   background: #5c899d;
   color: white;
-  font-size: 20px;
+  font-size: 15px;
   font-weight: 600;
   box-shadow: 0 0 5px gray;
   text-align: center;
@@ -130,5 +130,5 @@ p {
   display: none;
   color: red;
   gap: 10px;
-  
+
 }
