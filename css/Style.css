@@ -54,7 +54,7 @@ input:focus {
   padding: 15px;
   border: none;
   border-radius: 10px;
-  background: linear-gradient(135deg, #ff00aa);
+  background: #5C899D;
   color: white;
   font-size: 20px;
   font-weight: 600;
@@ -65,7 +65,6 @@ input:focus {
 
 #add-button:hover {
   scale: 105%;
-  background: linear-gradient(135deg, #00f5ff, #ff00aa);
 }
   section{
     width: 50%;
