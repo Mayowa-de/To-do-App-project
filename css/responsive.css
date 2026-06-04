@@ -60,4 +60,7 @@
     font-weight: 500;
     text-decoration: none;
   }
+  .delete-icon {
+    font-size: 18px;
+  }
 }

@@ -9,6 +9,7 @@ body {
   background: #efe9e0;
   background-repeat: no-repeat;
   background-size: cover;
+  font-family: "Montserrat", sans-serif
 }
 main {
   width: 100%;
@@ -122,4 +123,12 @@ p {
   display: flex;
   color: grey;
   background: #0f9e99;
+}
+#error-message {
+  width: 100%;
+  justify-content: center;
+  display: none;
+  color: red;
+  gap: 10px;
+  
 }
