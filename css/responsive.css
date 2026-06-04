@@ -40,7 +40,7 @@
     align-items: center;
     justify-content: center;
     padding: 20px 10p 10px;
-    background: transparent;
+    background: #0F9E99;
     backdrop-filter: blur(15px);
     border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 10px;
