@@ -92,8 +92,7 @@ input:focus {
     font-weight: 500;
   }
   .delete-icon{
-    background: red;
-    color: white;
+    color: red;
     padding: 10px;
     border: none;
     border-radius: 10px;

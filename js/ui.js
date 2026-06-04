@@ -16,9 +16,9 @@ function buildTodoCard(todo) {
   Divholder.appendChild(header);
   cardDiv.appendChild(Divholder);
 
-  const deleteIcon = document.createElement("button");
+  const deleteIcon = document.createElement("span");
   deleteIcon.classList.add("delete-icon");
-  deleteIcon.textContent = "Delete";
+  deleteIcon.innerHTML = `<i class='fas fa-trash'></i>`;
   Divholder.appendChild(deleteIcon); 
 
   deleteIcon.addEventListener("click", () => {
