@@ -48,6 +48,9 @@ input {
 input:focus {
   outline: 1px solid #ff00aa;
 }
+input:focus::after{
+  outline:none;
+}
 #add-button {
   width: 30%;
   height: 45px;
