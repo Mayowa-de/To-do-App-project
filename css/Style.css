@@ -43,7 +43,7 @@ input {
   padding: 0px 10px 0;
   border: none;
   border-radius: 5px;
-  box-shadow: 0 0 10px 3px gray;
+  box-shadow: 0 0 10px gray;
 }
 input:focus {
   outline: 1px solid #ff00aa;
