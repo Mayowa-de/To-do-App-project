@@ -27,9 +27,11 @@ function buildTodoCard(todo) {
   });
   // add div element to hold the date
   const footer = document.createElement("div");
-  const date = document.createElement("p");
+  const date = document.createElement("small");
   const currentDate = new Date();
-  date.textContent = currentDate.toLocaleTimeString();
+  date.textContent = currentDate.toLocaleTimeString([], {
+    hour: "2-digit",
+    minute: "2-digit"});
   footer.appendChild(date);
   cardDiv.appendChild(footer);
 

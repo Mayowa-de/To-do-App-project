@@ -8,7 +8,7 @@
 body {
   width: 100%;
   min-height: 100vh;
-  background: linear-gradient(135deg, #00f5ff, #00f6); 
+  background: #EFE9E0; 
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -38,15 +38,18 @@ h1 {
 input {
   width: 100%;
   height: 45px;
-  font-size: rem;
-  font-weight: 300;
+  font-size: 1rem;
+  font-weight: 500;
   padding: 0px 10px 0;
   border: none;
   border-radius: 5px;
-  box-shadow: 0 0 10px 3px gray;
+  box-shadow: 0 0 10px gray;
 }
 input:focus {
   outline: 1px solid #ff00aa;
+}
+input:focus::after{
+  outline:none;
 }
 #add-button {
   width: 30%;
@@ -54,18 +57,17 @@ input:focus {
   padding: 15px;
   border: none;
   border-radius: 10px;
-  background: linear-gradient(135deg, #ff00aa);
+  background: #5C899D;
   color: white;
   font-size: 20px;
   font-weight: 600;
-  box-shadow: 0 0 5px 3px gray;
+  box-shadow: 0 0 5px gray;
   text-align: center;
   transition: 0.3s ease;
 }
 
 #add-button:hover {
-  scale: 105%;
-  background: linear-gradient(135deg, #00f5ff, #ff00aa);
+  scale: 95%;
 }
   section{
     width: 50%;
@@ -83,11 +85,10 @@ input:focus {
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    background: transparent;
-    backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: #0F9E99;
+    border: none;
     border-radius: 10px;
-    box-shadow: 0 0 5px 3px gray;
+    box-shadow: 0 0 5px gray;
     color: white;
     font-weight: 500;
   }

@@ -16,6 +16,13 @@
   #add-button {
     width: 100%;
   }
+  #add-button:focus {
+  outline: none;
+}
+
+#add-button:active {
+  scale: 100%;
+}
   section{
     width: 100%;
     height: auto;
@@ -33,12 +40,12 @@
     align-items: center;
     justify-content: center;
     padding: 20px 10p 10px;
-    background: transparent;
-    backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: #0F9E99;
+    border: none;
     border-radius: 10px;
     color: white;
     font-weight: 500;
+    font-size:12px;
     gap: 30px;
   }
     .div-holder{
