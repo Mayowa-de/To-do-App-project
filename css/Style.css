@@ -86,7 +86,6 @@ input:focus::after{
     align-items: center;
     padding: 10px;
     background: #0F9E99;
-    backdrop-filter: blur(15px);
     border: none;
     border-radius: 10px;
     box-shadow: 0 0 5px gray;
