@@ -58,7 +58,7 @@ input:focus {
   color: white;
   font-size: 20px;
   font-weight: 600;
-  box-shadow: 0 0 5px 3px gray;
+  box-shadow: 0 0 5px gray;
   text-align: center;
   transition: 0.3s ease;
 }
@@ -86,7 +86,7 @@ input:focus {
     backdrop-filter: blur(15px);
     border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 10px;
-    box-shadow: 0 0 5px 3px gray;
+    box-shadow: 0 0 5px gray;
     color: white;
     font-weight: 500;
   }
