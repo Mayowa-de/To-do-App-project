@@ -27,8 +27,9 @@ function buildTodoCard(todo) {
   deleteIcon.addEventListener("click", () => {
     deleteItem(todo);
     cardDiv.remove();
+       showEmptyState();
   });
-  
+
   // add div element to hold the date
   const date = document.createElement("small");
   const currentDate = new Date();
@@ -42,11 +43,10 @@ function buildTodoCard(todo) {
   return cardDiv;
 }
 
-
-
 // function to show an error message when the input is empty
 function showInputMessage() {
-  const errorMessage = document.getElementById("error-message") || document.createElement("div");
+  const errorMessage =
+    document.getElementById("error-message") || document.createElement("div");
   errorMessage.id = "error-message";
   errorMessage.classList.add("error-message");
   errorMessage.textContent = "Please add a task ";
@@ -66,40 +66,66 @@ function showInputMessage() {
   }, 3000);
 }
 
-export function removeErrorMessage() {
+ function removeErrorMessage() {
   const existing = document.getElementById("error-message");
   if (existing) {
     existing.remove();
   }
 }
 
-
-// function removeErrorMessage() {
-//   const existing = document.getElementById("error-message");
-//   if (existing) {
-//     existing.remove();
-//   }
+// Empty state UI
+// export function renderEmptyState() {
+//   if (!container) return;
+//   if (document.getElementById("empty-state")) return;
+//   const el = document.createElement("div");
+//   el.id = "empty-state";
+//   el.classList.add("empty-state");
+//   el.innerHTML = `<p>No tasks yet — add your first task</p>`;
+//   container.appendChild(el);
 // }
 
+export function removeEmptyState() {
+  const existing = document.getElementById("empty-state");
+  if (existing) existing.remove();
+}
+
+//show empty state
+export function showEmptyState(){
+    if(!container) return; 
+    const emptyState = document.createElement("div")
+    emptyState.classList.add("emptyState")
+    
+    const emptyMessage = document.createElement("p")
+    emptyMessage.textContent = "No tasks added yet"
+    emptyState.appendChild(emptyMessage)
+
+    const iconEmpty = document.createElement("span");
+    iconEmpty.classList.add("empty-icon");
+    iconEmpty.innerHTML = `<i class='fas fa-tasks'></i>`;
+    emptyState.appendChild(iconEmpty);
+    container.appendChild(emptyState)
+
+}
 // function create call others functions to create a todo card, save it to local storage, and clear the input field
 export function createElement() {
-  if (!inputValue || !container) {
-    console.error("Input or container not found");
-    return;
-  }
+    if (!inputValue || !container) {
+      console.error("Input or container not found");
+      return;
+    }
 
-  const value = inputValue.value.trim();
-  if (!value) {
-    showInputMessage();
-    return;
-  }
+    const value = inputValue.value.trim();
+    if (!value) {
+      showInputMessage();
+      return;
+    }
 
-  removeErrorMessage();
-
-  const cardDiv = buildTodoCard(value);
-  container.appendChild(cardDiv);
-  saveItem(value);
-  inputValue.value = "";
+    removeErrorMessage();
+    const cardDiv = buildTodoCard(value);
+    container.appendChild(cardDiv)
+    saveItem(value);
+      removeEmptyState();
+      inputValue.value = [];
+ 
 
 }
 
@@ -109,8 +135,12 @@ window.addEventListener("DOMContentLoaded", () => {
   container = document.getElementById("container");
 
   const todos = getItem();
-  todos.forEach((todo) => {
-    const cardDiv = buildTodoCard(todo);
-    container.appendChild(cardDiv);
-  });
+    if (!todos || todos.length === 0) {
+      showEmptyState();
+    } else {
+      todos.forEach((todo) => {
+        const cardDiv = buildTodoCard(todo);
+        container.appendChild(cardDiv);
+      });
+    }
 });

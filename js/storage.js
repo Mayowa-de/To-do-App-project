@@ -14,4 +14,5 @@ export function deleteItem(value){
         todos.splice(index, 1);
         localStorage.setItem("item", JSON.stringify(todos));
     }
+
 }

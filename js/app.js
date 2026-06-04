@@ -2,12 +2,12 @@ import { createElement } from "./ui.js"
 
 const addButton = document.getElementById("add-button")
 
-console.log("addButton:", addButton)
-console.log("createElement function:", createElement)
-
+try {
 if(addButton) {
   addButton.addEventListener("click", () => {
-    console.log("Button clicked!")
     createElement()
   })
+}
+} catch (error) {
+  console.error("Error adding event listener to addButton:", error)
 }

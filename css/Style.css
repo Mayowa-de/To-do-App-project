@@ -9,7 +9,7 @@ body {
   background: #efe9e0;
   background-repeat: no-repeat;
   background-size: cover;
-  font-family: "Montserrat", sans-serif
+  font-family: "Montserrat", sans-serif;
 }
 main {
   width: 100%;
@@ -47,9 +47,7 @@ input {
 input:focus {
   outline: 1px solid #ff00aa;
 }
-input:focus::after {
-  outline: none;
-}
+
 #add-button {
   width: 30%;
   height: 45px;
@@ -117,7 +115,7 @@ p {
   cursor: pointer;
   font-weight: 600;
 }
-.errorMessage{
+.errorMessage {
   width: 100%;
   justify-content: center;
   display: flex;
@@ -130,5 +128,17 @@ p {
   display: none;
   color: red;
   gap: 10px;
-
+}
+.emptyState {
+  /* width: 100%; */
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+  color: grey;
+  gap: 10px;
+}
+.empty-icon {
+  font-size: 5.5rem;
 }
