@@ -70,6 +70,7 @@ section {
   width: 50%;
   height: auto;
   display: grid;
+  background:white;
   grid-template-columns: 1fr 1fr;
   justify-content: center;
   margin-top: 15px;
