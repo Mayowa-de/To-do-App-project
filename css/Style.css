@@ -216,6 +216,7 @@ p {
   border-radius: 10px;
   background: #fafafa;
   font-size: 0.95rem;
+  padding:"10px";
 }
 
 .popup-actions {
