@@ -25,11 +25,6 @@ function buildTodoCard(todo) {
   const Cardholder = document.createElement("div");
   Cardholder.classList.add("div-holder");
 
-  const header = document.createElement("p");
-  header.textContent = taskText;
-  Cardholder.appendChild(header);
-  cardDiv.appendChild(Cardholder);
-
   if (dueDate || level) {
     const infoRow = document.createElement("div");
     infoRow.classList.add("card-info");
@@ -49,6 +44,11 @@ function buildTodoCard(todo) {
 
     cardDiv.appendChild(infoRow);
   }
+  const header = document.createElement("p");
+  header.textContent = taskText;
+  Cardholder.appendChild(header);
+  cardDiv.appendChild(Cardholder);
+
 
   const footer = document.createElement("div");
   footer.classList.add("footer");
