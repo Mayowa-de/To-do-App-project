@@ -39,21 +39,15 @@ function buildTodoCard(todo) {
     if (level) {
       const levelText = document.createElement("span");
       const ball = document.createElement("span")
+      ball.style.width="10px";
+      ball.style.height="10px";
+      ball.style.borderRadius="50%";
       if(level === "Easy"){
-        ball.style.width= "10px";
-        ball.style.height="10px";
         ball.style.backgroundColor="green";
-        ball.style.borderRadius="50%";
-      }elif if(level === "Medium"){
-        ball.style.width="10px";
-        ball.style.height="10px";
-        ball.style.backgroundColor="yellow";
-        ball.style.borderRadius="50%";
+      }else if(level === "Medium"){
+        ball.style.backgroundColor="orange";
       }else{
-        ball.style.width="10px";
-        ball.style.height= "10px";
-        ball.style.backgroundColor="yellow";
-        ball.style.borderRadius="50%";
+        ball.style.backgroundColor="red";
 
     }
       levelText.appendChild(ball)
