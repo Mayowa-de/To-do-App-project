@@ -42,16 +42,16 @@ function buildTodoCard(todo) {
       ball.style.width="10px";
       ball.style.height="10px";
       ball.style.borderRadius="50%";
-      if(level === "Easy"){
+      if(level === "easy"){
         ball.style.backgroundColor="green";
-      }else if(level === "Medium"){
+      }else if(level === "medium"){
         ball.style.backgroundColor="orange";
       }else{
         ball.style.backgroundColor="red";
 
     }
       levelText.appendChild(ball)
-      levelText.textContent = `${level.charAt(0).toUpperCase() + level.slice(1)}`;
+      levelText.append(level.charAt(0).toUpperCase() + level.slice(1));
       infoRow.appendChild(levelText);
     }
 
