@@ -25,7 +25,7 @@ function buildTodoCard(todo) {
   const Cardholder = document.createElement("div");
   Cardholder.classList.add("div-holder");
 
-  if (inputValue !== 0) {
+  if (inputValue.value !== 0) {
     const infoRow = document.createElement("div");
     infoRow.classList.add("card-info");
 
