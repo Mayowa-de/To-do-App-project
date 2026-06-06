@@ -24,8 +24,8 @@ function buildTodoCard(todo) {
   // add a div element to hold the header and delete button
   const Cardholder = document.createElement("div");
   Cardholder.classList.add("div-holder");
-
-  if (inputValue.value !== 0) {
+  valued = inputValue.value.trim()
+  if (valued === " ") {
     const infoRow = document.createElement("div");
     infoRow.classList.add("card-info");
 
