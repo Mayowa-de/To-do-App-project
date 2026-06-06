@@ -22,9 +22,6 @@ main {
 }
 h1 {
   font-weight: 600;
-  font-family:
-    "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 .content {
   width: 100%;
@@ -219,10 +216,10 @@ p {
   padding:"10px";
 }
 #due-date-input{
-  padding:10px;
+  padding:20px;
 }
 #label-select{
-  padding:10px;
+  padding:20px;
 }
 .popup-actions {
   display: flex;
