@@ -28,6 +28,28 @@
       <p id="error-message"></p>
       <section id="container"></section>
     </main>
+
+    <div id="task-popup" class="popup-overlay hidden">
+      <div class="popup-card">
+        <h2>Add Task Details</h2>
+        <label>
+          Due date
+          <input id="due-date-input" type="date" />
+        </label>
+        <label>
+          Level
+          <select id="level-select">
+            <option value="easy">Easy</option>
+            <option value="hard">Hard</option>
+          </select>
+        </label>
+        <div class="popup-actions">
+          <button id="cancel-popup" type="button">Cancel</button>
+          <button id="confirm-task" type="button">Add Task</button>
+        </div>
+      </div>
+    </div>
+
     <script type="module" src="./js/app.js"></script>
   </body>
 </html>

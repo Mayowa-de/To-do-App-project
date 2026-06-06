@@ -2,20 +2,53 @@ import { saveItem, getItem, deleteItem } from "./storage.js";
 
 let inputValue;
 let container;
+let popupOverlay;
+let dueDateInput;
+let levelSelect;
+let popupConfirm;
+let popupCancel;
 
 //function to build a todo card with a header, delete button, and date
 function buildTodoCard(todo) {
   const cardDiv = document.createElement("div");
   cardDiv.classList.add("card");
 
+  const taskText = typeof todo === "string" ? todo : todo.task;
+  const dueDate = todo && typeof todo === "object" ? todo.dueDate : null;
+  const level = todo && typeof todo === "object" ? todo.level : null;
+
+  if (level) {
+    cardDiv.classList.add(level);
+  }
+
   // add a div element to hold the header and delete button
-  const Divholder = document.createElement("div");
-  Divholder.classList.add("div-holder");
+  const Cardholder = document.createElement("div");
+  Cardholder.classList.add("div-holder");
 
   const header = document.createElement("p");
-  header.textContent = todo;
-  Divholder.appendChild(header);
-  cardDiv.appendChild(Divholder);
+  header.textContent = taskText;
+  Cardholder.appendChild(header);
+  cardDiv.appendChild(Cardholder);
+
+  if (dueDate || level) {
+    const infoRow = document.createElement("div");
+    infoRow.classList.add("card-info");
+
+    if (dueDate) {
+      const dueText = document.createElement("span");
+      const parsedDate = new Date(dueDate);
+      dueText.textContent = `Due: ${parsedDate.toLocaleDateString()}`;
+      infoRow.appendChild(dueText);
+    }
+
+    if (level) {
+      const levelText = document.createElement("span");
+      levelText.textContent = `Level: ${level.charAt(0).toUpperCase() + level.slice(1)}`;
+      infoRow.appendChild(levelText);
+    }
+
+    cardDiv.appendChild(infoRow);
+  }
 
   const footer = document.createElement("div");
   footer.classList.add("footer");
@@ -25,9 +58,13 @@ function buildTodoCard(todo) {
   footer.appendChild(deleteIcon);
 
   deleteIcon.addEventListener("click", () => {
-    deleteItem(todo);
+    if (todo && typeof todo === "object" && todo.id) {
+      deleteItem(todo.id);
+    } else {
+      deleteItem(taskText);
+    }
     cardDiv.remove();
-
+    updateEmptyState();
   });
 
   // add div element to hold the date
@@ -73,17 +110,19 @@ function showInputMessage() {
   }
 }
 
-
+// function to remove the empty state message when a new card is added
 export function removeEmptyState() {
   const existing = document.getElementById("empty-state");
   if (existing) existing.remove();
-
 }
 
 //show empty state
 export function showEmptyState(){
-    if(!container) return; 
+    if (!container) return;
+    if (document.getElementById("empty-state")) return;
+
     const emptyState = document.createElement("div")
+    emptyState.id = "empty-state";
     emptyState.classList.add("emptyState")
     
     const emptyMessage = document.createElement("p")
@@ -95,45 +134,101 @@ export function showEmptyState(){
     iconEmpty.innerHTML = `<i class='fas fa-tasks'></i>`;
     emptyState.appendChild(iconEmpty);
     container.appendChild(emptyState)
-
 }
+
+// function to check if there are any cards left, if not show the empty state
+function updateEmptyState() {
+  if (!container) return;
+  const hasCard = container.querySelector(".card");
+  if (!hasCard) {
+    showEmptyState();
+  }
+}
+
+export function showTaskPopup() {
+  if (!popupOverlay) return;
+  popupOverlay.classList.remove("hidden");
+  if (dueDateInput) dueDateInput.value = "";
+  if (levelSelect) levelSelect.value = "easy";
+}
+
+function hideTaskPopup() {
+  if (!popupOverlay) return;
+  popupOverlay.classList.add("hidden");
+}
+
+function submitTask() {
+  if (!popupOverlay) return;
+  const dueDate = dueDateInput ? dueDateInput.value : "";
+  const level = levelSelect ? levelSelect.value : "easy";
+  const success = createElement(dueDate, level);
+  if (success) {
+    hideTaskPopup();
+  }
+}
+
 // function create call others functions to create a todo card, save it to local storage, and clear the input field
-export function createElement() {
+export function createElement(dueDate = "", level = "easy") {
     if (!inputValue || !container) {
       console.error("Input or container not found");
-      return;
+      return false;
     }
 
     const value = inputValue.value.trim();
     if (!value) {
       showInputMessage();
-      return;
+      return false;
     }
 
     removeErrorMessage();
-    const cardDiv = buildTodoCard(value);
-    container.appendChild(cardDiv)
-    saveItem(value);
-      removeEmptyState();
-      inputValue.value = [];
- 
+    removeEmptyState();
 
+    const todo = {
+      id: Date.now(),
+      task: value,
+      dueDate,
+      level,
+    };
+
+    const cardDiv = buildTodoCard(todo);
+    container.appendChild(cardDiv);
+    saveItem(todo);
+    inputValue.value = "";
+    return true;
 }
-
 
 
 // Load and display todos on page load
 window.addEventListener("DOMContentLoaded", () => {
   inputValue = document.getElementById("input");
   container = document.getElementById("container");
+  popupOverlay = document.getElementById("task-popup");
+  dueDateInput = document.getElementById("due-date-input");
+  levelSelect = document.getElementById("level-select");
+  popupConfirm = document.getElementById("confirm-task");
+  popupCancel = document.getElementById("cancel-popup");
+
+  if (popupConfirm) {
+    popupConfirm.addEventListener("click", submitTask);
+  }
+  if (popupCancel) {
+    popupCancel.addEventListener("click", hideTaskPopup);
+  }
+  if (popupOverlay) {
+    popupOverlay.addEventListener("click", (event) => {
+      if (event.target === popupOverlay) {
+        hideTaskPopup();
+      }
+    });
+  }
 
   const todos = getItem();
-    if (!todos || todos.length === 0) {
-      showEmptyState();
-    } else {
-      todos.forEach((todo) => {
-        const cardDiv = buildTodoCard(todo);
-        container.appendChild(cardDiv);
-      });
-    }
+  if (!todos || todos.length === 0) {
+    showEmptyState();
+  } else {
+    todos.forEach((todo) => {
+      const cardDiv = buildTodoCard(todo);
+      container.appendChild(cardDiv);
+    });
+  }
 });
