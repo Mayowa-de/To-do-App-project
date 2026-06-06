@@ -185,9 +185,9 @@ export function createElement(dueDate = "", level = "easy") {
 
     const todo = {
       id: Date.now(),
-      task: value,
       dueDate,
       level,
+      task: value
     };
 
     const cardDiv = buildTodoCard(todo);
