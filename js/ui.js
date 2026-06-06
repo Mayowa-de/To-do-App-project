@@ -38,7 +38,8 @@ function buildTodoCard(todo) {
 
     if (level) {
       const levelText = document.createElement("span");
-      const ball = document.createElement("span")
+      const ball = document.createElement("span");
+      ball.style.display = "inline-block"
       ball.style.width="10px";
       ball.style.height="10px";
       ball.style.borderRadius="50%";
