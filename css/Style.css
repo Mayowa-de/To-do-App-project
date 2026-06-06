@@ -164,6 +164,9 @@ p {
 .card.hard {
   border: 2px solid #f28b82;
 }
+.card.medium{
+  border: 2px solid yellow;
+}
 
 .popup-overlay {
   position: fixed;
