@@ -38,7 +38,24 @@ function buildTodoCard(todo) {
 
     if (level) {
       const levelText = document.createElement("span");
-      levelText.textContent = `Level: ${level.charAt(0).toUpperCase() + level.slice(1)}`;
+      if(level.value === "Easy"){
+         const easyBall = document.createElement("span");
+        easyBall.style.color="green";
+        easyBall.style.BorderRadius="50%";
+        levelText.appendChild(easyBall);
+      }elif (level.value === "Medium"){
+        const mediumBall =document.createElement("span");
+        mediumBall.style.color="yellow";
+        mediumBall.style.BorderRadius="50%";
+        levelText.appendChild(mediumBall)
+      }else{
+       const hardBall =document.createElement("span");
+        hardBall.style.color="yellow";
+        hardBall.style.BorderRadius="50%";
+        levelText.appendChild(hardBall)
+
+    }
+      levelText.textContent = `${level.charAt(0).toUpperCase() + level.slice(1)}`;
       infoRow.appendChild(levelText);
     }
 
