@@ -164,7 +164,7 @@ function updateEmptyState() {
 
 export function showTaskPopup() {
   if(!inputValue) return;
-  value = inputValue.value.trim();
+  const value = inputValue.value.trim();
 
   if(!value){
     showInputMessage()
