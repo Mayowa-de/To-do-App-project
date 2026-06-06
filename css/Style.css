@@ -218,7 +218,12 @@ p {
   font-size: 0.95rem;
   padding:"10px";
 }
-
+#due-date-input{
+  padding:10px;
+}
+#label-select{
+  padding:10px;
+}
 .popup-actions {
   display: flex;
   justify-content: flex-end;
