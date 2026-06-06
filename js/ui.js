@@ -24,8 +24,8 @@ function buildTodoCard(todo) {
   // add a div element to hold the header and delete button
   const Cardholder = document.createElement("div");
   Cardholder.classList.add("div-holder");
-  valued = inputValue.value.trim()
-  if (valued === " ") {
+
+  if (dueDate || level) {
     const infoRow = document.createElement("div");
     infoRow.classList.add("card-info");
 
@@ -163,6 +163,14 @@ function updateEmptyState() {
 }
 
 export function showTaskPopup() {
+  if(!inputValue) return;
+  value = inputValue.value.trim();
+
+  if(!value){
+    showInputMessage()
+    return;
+  }
+  
   if (!popupOverlay) return;
   popupOverlay.classList.remove("hidden");
   if (dueDateInput) dueDateInput.value = "";
