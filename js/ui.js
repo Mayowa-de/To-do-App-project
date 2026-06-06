@@ -53,6 +53,8 @@ function buildTodoCard(todo) {
     }
       levelText.appendChild(ball)
       levelText.append(level.charAt(0).toUpperCase() + level.slice(1));
+      levelText.style.display ="flex";
+      levelText.style.gap="12px";
       infoRow.appendChild(levelText);
     }
 
