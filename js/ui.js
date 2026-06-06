@@ -38,23 +38,25 @@ function buildTodoCard(todo) {
 
     if (level) {
       const levelText = document.createElement("span");
-      if(level.value === "Easy"){
-         const easyBall = document.createElement("span");
-        easyBall.style.color="green";
-        easyBall.style.BorderRadius="50%";
-        levelText.appendChild(easyBall);
-      }elif (level.value === "Medium"){
-        const mediumBall =document.createElement("span");
-        mediumBall.style.color="yellow";
-        mediumBall.style.BorderRadius="50%";
-        levelText.appendChild(mediumBall)
+      const ball = document.createElement("span")
+      if(level === "Easy"){
+        ball.style.width= "10px";
+        ball.style.height="10px";
+        ball.style.backgroundColor="green";
+        ball.style.borderRadius="50%";
+      }elif if(level === "Medium"){
+        ball.style.width="10px";
+        ball.style.height="10px";
+        ball.style.backgroundColor="yellow";
+        ball.style.borderRadius="50%";
       }else{
-       const hardBall =document.createElement("span");
-        hardBall.style.color="yellow";
-        hardBall.style.BorderRadius="50%";
-        levelText.appendChild(hardBall)
+        ball.style.width="10px";
+        ball.style.height= "10px";
+        ball.style.backgroundColor="yellow";
+        ball.style.borderRadius="50%";
 
     }
+      levelText.appendChild(ball)
       levelText.textContent = `${level.charAt(0).toUpperCase() + level.slice(1)}`;
       infoRow.appendChild(levelText);
     }
