@@ -1,5 +1,4 @@
 import { showTaskPopup } from "./ui.js"
-const input = document.getElementById("input")
 const addButton = document.getElementById("add-button")
 
 try {

@@ -175,36 +175,101 @@ function updateEmptyState() {
 }
 
 export function showTaskPopup() {
-  if(!inputValue) return;
-  const value = inputValue.value.trim();
-
-  if(!value){
-    showInputMessage()
-    return;
-  }
   
   if (!popupOverlay) return;
+  
+  // Clear error message
+  const errorDiv = document.getElementById("popup-error-message");
+  if (errorDiv) {
+    errorDiv.style.display = "none";
+  }
+  
+  // Remove error styling
+  if (inputValue) inputValue.classList.remove("error-input");
+  if (dueDateInput) dueDateInput.classList.remove("error-input");
+  if (levelSelect) levelSelect.classList.remove("error-input");
+  
   popupOverlay.classList.remove("hidden");
+  if (inputValue) inputValue.value = "";
   if (dueDateInput) dueDateInput.value = "";
   if (levelSelect) levelSelect.value = "easy";
+  if (inputValue) inputValue.focus();
 }
+
 
 function hideTaskPopup() {
   if (!popupOverlay) return;
   popupOverlay.classList.add("hidden");
 }
 
+function showPopupError() {
+  let errorDiv = document.getElementById("popup-error-message");
+  if (!errorDiv) {
+    errorDiv = document.createElement("div");
+    errorDiv.id = "popup-error-message";
+    errorDiv.classList.add("popup-error-message");
+    const popupCard = document.querySelector(".popup-card");
+    if (popupCard) {
+      popupCard.insertBefore(errorDiv, popupCard.firstChild);
+    }
+  }
+  errorDiv.style.display = "block";
+
+  // Add red focus to inputs
+  if (inputValue) inputValue.classList.add("error-input");
+  if (dueDateInput) dueDateInput.classList.add("error-input");
+  if (levelSelect) levelSelect.classList.add("error-input");
+
+  // Remove error after 3 seconds
+  setTimeout(() => {
+    errorDiv.style.display = "none";
+    if (inputValue) inputValue.classList.remove("error-input");
+    if (dueDateInput) dueDateInput.classList.remove("error-input");
+    if (levelSelect) levelSelect.classList.remove("error-input");
+  }, 3000);
+}
+
 function submitTask() {
   if (!popupOverlay) return;
+  const taskValue = inputValue ? inputValue.value.trim() : "";
+
+  if (!taskValue) {
+    showPopupError();
+    return;
+  }
+
   const dueDate = dueDateInput ? dueDateInput.value : "";
   const level = levelSelect ? levelSelect.value : "easy";
-  const success = createElement(dueDate, level);
+  const success = createTaskFromPopup(taskValue, dueDate, level);
   if (success) {
     hideTaskPopup();
   }
 }
 
+function createTaskFromPopup(taskValue, dueDate, level) {
+  if (!container) {
+    console.error("Container not found");
+    return false;
+  }
+
+  removeEmptyState();
+
+  const todo = {
+    id: Date.now(),
+    task: taskValue,
+    dueDate,
+    level,
+  };
+
+  const cardDiv = buildTodoCard(todo);
+  container.appendChild(cardDiv);
+  saveItem(todo);
+  inputValue.value = "";
+  return true;
+}
+
 // function create call others functions to create a todo card, save it to local storage, and clear the input field
+// Used for the main input outside the popup
 export function createElement(dueDate = "", level = "easy") {
   if (!inputValue || !container) {
     console.error("Input or container not found");

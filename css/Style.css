@@ -268,3 +268,15 @@ p {
   color: #fff;
 }
 
+
+.popup-card .error-input {
+  border: 1px solid #f28b82 !important;
+  outline: 1px solid #f28b82 !important;
+  background: #ffebee !important;
+}
+
+.popup-card .error-input:focus {
+  border: 1px solid #f28b82 !important;
+  outline: 1px solid #f28b82 !important;
+}
+
