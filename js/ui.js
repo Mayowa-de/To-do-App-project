@@ -21,6 +21,15 @@ function buildTodoCard(todo) {
     cardDiv.classList.add(level);
   }
 
+  // add a div element to hold the header and delete button
+  const Cardholder = document.createElement("div");
+  Cardholder.classList.add("div-holder");
+
+  const header = document.createElement("p");
+  header.textContent = taskText;
+  Cardholder.appendChild(header);
+  cardDiv.appendChild(Cardholder);
+
   if (dueDate || level) {
     const infoRow = document.createElement("div");
     infoRow.classList.add("card-info");
@@ -46,20 +55,29 @@ function buildTodoCard(todo) {
 
     if (level) {
       const levelText = document.createElement("span");
-      levelText.textContent = `Level: ${level.charAt(0).toUpperCase() + level.slice(1)}`;
+      const ball = document.createElement("span");
+      ball.style.display = "inline-block"
+      ball.style.width="10px";
+      ball.style.height="10px";
+      ball.style.borderRadius="50%";
+      if(level === "easy"){
+        ball.style.backgroundColor="green";
+      }else if(level === "medium"){
+        ball.style.backgroundColor="orange";
+      }else{
+        ball.style.backgroundColor="red";
+
+    }
+      levelText.appendChild(ball)
+      levelText.append(level.charAt(0).toUpperCase() + level.slice(1));
+      levelText.style.display ="flex";
+      levelText.style.alignItems="center";
+      levelText.style.gap="12px";
       infoRow.appendChild(levelText);
     }
 
     cardDiv.appendChild(infoRow);
   }
-  // add a div element to hold the header and delete button
-  const Cardholder = document.createElement("div");
-  Cardholder.classList.add("div-holder");
-
-  const header = document.createElement("p");
-  header.textContent = taskText;
-  Cardholder.appendChild(header);
-  cardDiv.appendChild(Cardholder);
 
   const footer = document.createElement("div");
   footer.classList.add("footer");
@@ -157,6 +175,14 @@ function updateEmptyState() {
 }
 
 export function showTaskPopup() {
+  if(!inputValue) return;
+  const value = inputValue.value.trim();
+
+  if(!value){
+    showInputMessage()
+    return;
+  }
+  
   if (!popupOverlay) return;
   popupOverlay.classList.remove("hidden");
   if (dueDateInput) dueDateInput.value = "";
@@ -194,12 +220,12 @@ export function createElement(dueDate = "", level = "easy") {
   removeErrorMessage();
   removeEmptyState();
 
-  const todo = {
-    id: Date.now(),
-    task: value,
-    dueDate,
-    level,
-  };
+    const todo = {
+      id: Date.now(),
+      task: value,
+      dueDate,
+      level,
+    };
 
   const cardDiv = buildTodoCard(todo);
   container.appendChild(cardDiv);

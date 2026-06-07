@@ -22,9 +22,6 @@ main {
 }
 h1 {
   font-weight: 600;
-  font-family:
-    "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 .content {
   width: 100%;
@@ -183,6 +180,9 @@ p {
 .card.hard {
   border: 2px solid #f28b82;
 }
+.card.medium{
+  border: 2px solid yellow;
+}
 
 .popup-overlay {
   position: fixed;
@@ -232,8 +232,14 @@ p {
   border-radius: 10px;
   background: #fafafa;
   font-size: 0.95rem;
+  padding:"10px";
 }
-
+#due-date-input{
+  padding:20px;
+}
+#label-select{
+  padding:20px;
+}
 .popup-actions {
   display: flex;
   justify-content: flex-end;
