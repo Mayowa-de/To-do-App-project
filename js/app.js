@@ -1,4 +1,4 @@
-import { showTaskPopup, filterTodos } from "./ui.js"
+import { showTaskPopup, filterTodos, filterByText } from "./ui.js"
 const addButton = document.getElementById("add-button")
 
 try {
@@ -23,5 +23,19 @@ if (filterButtons && filterButtons.length) {
       if (id === 'active-card') filterTodos('active');
       if (id === 'completed-card') filterTodos('completed');
     });
+  });
+}
+
+// Search input: filter by title as user types and on Enter
+const searchInput = document.querySelector('.search-input');
+if (searchInput) {
+  searchInput.addEventListener('input', (e) => {
+    filterByText(e.target.value);
+  });
+  searchInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      filterByText(e.target.value);
+    }
   });
 }

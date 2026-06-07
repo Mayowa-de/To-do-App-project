@@ -235,6 +235,32 @@ export function filterTodos(mode) {
   });
 }
 
+// Filter cards by text in title, respecting current active filter button
+export function filterByText(query) {
+  if (!container) return;
+  const q = (query || '').trim().toLowerCase();
+  const activeBtn = document.querySelector('.filter-btn.active');
+  let mode = 'all';
+  if (activeBtn) {
+    if (activeBtn.id === 'active-card') mode = 'active';
+    else if (activeBtn.id === 'completed-card') mode = 'completed';
+  }
+
+  const cards = Array.from(container.querySelectorAll('.card'));
+  cards.forEach(card => {
+    const titleEl = card.querySelector('p');
+    const title = titleEl ? titleEl.textContent.toLowerCase() : '';
+    const matchesText = q === '' || title.includes(q);
+    const isCompleted = card.classList.contains('completed');
+
+    let passesFilter = true;
+    if (mode === 'active') passesFilter = !isCompleted;
+    else if (mode === 'completed') passesFilter = isCompleted;
+
+    card.style.display = (matchesText && passesFilter) ? '' : 'none';
+  });
+}
+
 
 function hideTaskPopup() {
   if (!popupOverlay) return;
