@@ -34,10 +34,12 @@ h1 {
 .input-container {
   position: relative;
   width: 100%;
+  align-items: center;
+  display: flex;
 }
 #search-icon {
   position: absolute;
-  left: 10px;
+  left: 20px;
   top: 50%;
   transform: translateY(-50%);
   color: #999;
@@ -54,10 +56,10 @@ input {
   box-shadow: 0 0 10px gray;
 }
 input::placeholder {
-  padding-left: 20px;
+  padding-left: 35px;
   color: #999;
 }
-.input-container input:not(:placeholder-shown) + i{
+.input-container input:not(:placeholder-shown) + #search-icon {
   display: none;
 }
 input:focus {
