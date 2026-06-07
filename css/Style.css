@@ -84,6 +84,41 @@ input:focus {
 #add-button:hover {
   scale: 95%;
 }
+.filter-container{
+  width: 100%;
+  display:flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+#all-card{
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 0 2px solid grey;
+  font-size: 1.2rem;
+  font-weight: 500;
+  cursor: pointer;
+  background: red;
+  color: white;
+}
+#completed-card{
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 0 2px solid grey;
+  font-size: 1.2rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+#active-card{
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 0 2px solid grey;
+  font-size: 1.2rem;
+  font-weight: 500;
+  cursor: pointer;
+}
 section {
   width: 50%;
   height: auto;
