@@ -21,23 +21,26 @@ function buildTodoCard(todo) {
     cardDiv.classList.add(level);
   }
 
-  // add a div element to hold the header and delete button
-  const Cardholder = document.createElement("div");
-  Cardholder.classList.add("div-holder");
-
-  const header = document.createElement("p");
-  header.textContent = taskText;
-  Cardholder.appendChild(header);
-  cardDiv.appendChild(Cardholder);
-
   if (dueDate || level) {
     const infoRow = document.createElement("div");
     infoRow.classList.add("card-info");
 
     if (dueDate) {
       const dueText = document.createElement("span");
+      const today = new Date();
       const parsedDate = new Date(dueDate);
-      dueText.textContent = `Due: ${parsedDate.toLocaleDateString()}`;
+      const diffTime = parsedDate - today;
+      const diffDays = Math.ceil(diffTime/(1000 * 60 * 60 * 24))
+      
+      let dueTexted = ''
+      if(diffDays > 0){
+        dueTexted = `Due in ${diffDays} day(s)`
+      }else if(diffDays === 0){
+        dueTexted= "Due today";
+      }else{
+        dueTexted =`Overdue by ${Math.abs(diffDays)} day(s)`
+      }
+      dueText.textContent = dueTexted;
       infoRow.appendChild(dueText);
     }
 
@@ -49,6 +52,14 @@ function buildTodoCard(todo) {
 
     cardDiv.appendChild(infoRow);
   }
+  // add a div element to hold the header and delete button
+  const Cardholder = document.createElement("div");
+  Cardholder.classList.add("div-holder");
+
+  const header = document.createElement("p");
+  header.textContent = taskText;
+  Cardholder.appendChild(header);
+  cardDiv.appendChild(Cardholder);
 
   const footer = document.createElement("div");
   footer.classList.add("footer");
@@ -70,10 +81,10 @@ function buildTodoCard(todo) {
   // add div element to hold the date
   const date = document.createElement("small");
   const currentDate = new Date();
-  date.textContent = currentDate.toLocaleTimeString([], {
+  date.textContent = `created: ${currentDate.toLocaleTimeString([], {
     hour: "2-digit",
     minute: "2-digit",
-  });
+  })}`;
   footer.appendChild(date);
   cardDiv.appendChild(footer);
 
@@ -103,7 +114,7 @@ function showInputMessage() {
   }, 3000);
 }
 
- function removeErrorMessage() {
+function removeErrorMessage() {
   const existing = document.getElementById("error-message");
   if (existing) {
     existing.remove();
@@ -117,23 +128,23 @@ export function removeEmptyState() {
 }
 
 //show empty state
-export function showEmptyState(){
-    if (!container) return;
-    if (document.getElementById("empty-state")) return;
+export function showEmptyState() {
+  if (!container) return;
+  if (document.getElementById("empty-state")) return;
 
-    const emptyState = document.createElement("div")
-    emptyState.id = "empty-state";
-    emptyState.classList.add("emptyState")
-    
-    const emptyMessage = document.createElement("p")
-    emptyMessage.textContent = "No tasks added yet"
-    emptyState.appendChild(emptyMessage)
+  const emptyState = document.createElement("div");
+  emptyState.id = "empty-state";
+  emptyState.classList.add("emptyState");
 
-    const iconEmpty = document.createElement("span");
-    iconEmpty.classList.add("empty-icon");
-    iconEmpty.innerHTML = `<i class='fas fa-tasks'></i>`;
-    emptyState.appendChild(iconEmpty);
-    container.appendChild(emptyState)
+  const emptyMessage = document.createElement("p");
+  emptyMessage.textContent = "No tasks added yet";
+  emptyState.appendChild(emptyMessage);
+
+  const iconEmpty = document.createElement("span");
+  iconEmpty.classList.add("empty-icon");
+  iconEmpty.innerHTML = `<i class='fas fa-tasks'></i>`;
+  emptyState.appendChild(iconEmpty);
+  container.appendChild(emptyState);
 }
 
 // function to check if there are any cards left, if not show the empty state
@@ -169,34 +180,33 @@ function submitTask() {
 
 // function create call others functions to create a todo card, save it to local storage, and clear the input field
 export function createElement(dueDate = "", level = "easy") {
-    if (!inputValue || !container) {
-      console.error("Input or container not found");
-      return false;
-    }
+  if (!inputValue || !container) {
+    console.error("Input or container not found");
+    return false;
+  }
 
-    const value = inputValue.value.trim();
-    if (!value) {
-      showInputMessage();
-      return false;
-    }
+  const value = inputValue.value.trim();
+  if (!value) {
+    showInputMessage();
+    return false;
+  }
 
-    removeErrorMessage();
-    removeEmptyState();
+  removeErrorMessage();
+  removeEmptyState();
 
-    const todo = {
-      id: Date.now(),
-      task: value,
-      dueDate,
-      level,
-    };
+  const todo = {
+    id: Date.now(),
+    task: value,
+    dueDate,
+    level,
+  };
 
-    const cardDiv = buildTodoCard(todo);
-    container.appendChild(cardDiv);
-    saveItem(todo);
-    inputValue.value = "";
-    return true;
+  const cardDiv = buildTodoCard(todo);
+  container.appendChild(cardDiv);
+  saveItem(todo);
+  inputValue.value = "";
+  return true;
 }
-
 
 // Load and display todos on page load
 window.addEventListener("DOMContentLoaded", () => {

@@ -23,7 +23,7 @@
 
       <div class="content">
         <div class="input-container">
-        <input type="text" id="input" placeholder="Enter task title" />
+        <input type="text" placeholder="Enter task title" />
         <i class="fas fa-search" id="search-icon"></i>
       </div>
         <button id="add-button">+ Add Task</button>
@@ -35,11 +35,15 @@
     <div id="task-popup" class="popup-overlay hidden">
       <div class="popup-card">
         <h2>Add Task Details</h2>
-        <label>
+        <label for="title">
+          Title
+          <input type="text" id="input">
+        </label>
+        <label for="due date">
           Due date
           <input id="due-date-input" type="date" />
         </label>
-        <label>
+        <label for="level">
           Level
           <select id="level-select">
             <option value="easy">Easy</option>
