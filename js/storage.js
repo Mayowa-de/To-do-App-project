@@ -7,6 +7,17 @@ export function saveItem(value){
     todos.push(value)
     localStorage.setItem("item", JSON.stringify(todos))
 }
+
+export function toggleComplete(id) {
+    const todos = getItem();
+    const updated = todos.map(item => {
+        if (item && typeof item === 'object' && item.id === id) {
+            return { ...item, completed: !item.completed };
+        }
+        return item;
+    });
+    localStorage.setItem("item", JSON.stringify(updated));
+}
 export function deleteItem(value) {
     const todos = getItem();
     const filteredTodos = todos.filter((item) => {

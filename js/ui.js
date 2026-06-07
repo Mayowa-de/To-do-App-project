@@ -1,4 +1,4 @@
-import { saveItem, getItem, deleteItem } from "./storage.js";
+import { saveItem, getItem, deleteItem, toggleComplete } from "./storage.js";
 
 let inputValue;
 let container;
@@ -12,10 +12,18 @@ let popupCancel;
 function buildTodoCard(todo) {
   const cardDiv = document.createElement("div");
   cardDiv.classList.add("card");
+  if (todo && typeof todo === 'object' && todo.id) {
+    cardDiv.dataset.id = todo.id;
+  }
 
   const taskText = typeof todo === "string" ? todo : todo.task;
   const dueDate = todo && typeof todo === "object" ? todo.dueDate : null;
   const level = todo && typeof todo === "object" ? todo.level : null;
+  const completed = todo && typeof todo === 'object' ? !!todo.completed : false;
+
+  if (completed) {
+    cardDiv.classList.add('completed');
+  }
 
   if (level) {
     cardDiv.classList.add(level);
@@ -70,14 +78,30 @@ function buildTodoCard(todo) {
     cardDiv.appendChild(infoRow);
   }
 
-  // add a div element to hold the header and delete button
+  // add a div element to hold the header, complete toggle and delete button
   const Cardholder = document.createElement("div");
   Cardholder.classList.add("div-holder");
+
+  const completeToggle = document.createElement('button');
+  completeToggle.classList.add('complete-toggle');
+  completeToggle.setAttribute('aria-label', 'toggle complete');
+  completeToggle.innerHTML = completed ? '&#10003;' : '';
+  Cardholder.appendChild(completeToggle);
 
   const header = document.createElement("p");
   header.textContent = taskText;
   Cardholder.appendChild(header);
   cardDiv.appendChild(Cardholder);
+
+  completeToggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const id = todo && todo.id;
+    if (id) {
+      toggleComplete(id);
+      cardDiv.classList.toggle('completed');
+      completeToggle.innerHTML = cardDiv.classList.contains('completed') ? '&#10003;' : '';
+    }
+  });
 
   const footer = document.createElement("div");
   footer.classList.add("footer");
@@ -196,13 +220,28 @@ export function showTaskPopup() {
   if (inputValue) inputValue.focus();
 }
 
+export function filterTodos(mode) {
+  if (!container) return;
+  const cards = Array.from(container.querySelectorAll('.card'));
+  cards.forEach(card => {
+    const isCompleted = card.classList.contains('completed');
+    if (mode === 'all') {
+      card.style.display = '';
+    } else if (mode === 'active') {
+      card.style.display = isCompleted ? 'none' : '';
+    } else if (mode === 'completed') {
+      card.style.display = isCompleted ? '' : 'none';
+    }
+  });
+}
+
 
 function hideTaskPopup() {
   if (!popupOverlay) return;
   popupOverlay.classList.add("hidden");
 }
 
-function showPopupError() {
+function showPopupError(message) {
   let errorDiv = document.getElementById("popup-error-message");
   if (!errorDiv) {
     errorDiv = document.createElement("div");
@@ -213,6 +252,7 @@ function showPopupError() {
       popupCard.insertBefore(errorDiv, popupCard.firstChild);
     }
   }
+  errorDiv.textContent = message || "Please fix the errors";
   errorDiv.style.display = "block";
 
   // Add red focus to inputs
@@ -259,6 +299,7 @@ function createTaskFromPopup(taskValue, dueDate, level) {
     task: taskValue,
     dueDate,
     level,
+    completed: false,
   };
 
   const cardDiv = buildTodoCard(todo);
@@ -290,6 +331,7 @@ export function createElement(dueDate = "", level = "easy") {
       task: value,
       dueDate,
       level,
+      completed: false,
     };
 
   const cardDiv = buildTodoCard(todo);

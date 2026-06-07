@@ -90,34 +90,24 @@ input:focus {
   gap: 10px;
   margin-top: 20px;
 }
-#all-card{
+.filter-container .filter-btn{
   padding: 10px;
   border: none;
   border-radius: 10px;
-  box-shadow: 0 0 2px solid grey;
+  box-shadow: 0 0 3px grey;
   font-size: 1.2rem;
   font-weight: 500;
   cursor: pointer;
+  background: #f1f1f1;
+  color: #222;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.filter-container .filter-btn.active{
   background: red;
   color: white;
 }
-#completed-card{
-  padding: 10px;
-  border: none;
-  border-radius: 10px;
-  box-shadow: 0 0 2px solid grey;
-  font-size: 1.2rem;
-  font-weight: 500;
-  cursor: pointer;
-}
-#active-card{
-  padding: 10px;
-  border: none;
-  border-radius: 10px;
-  box-shadow: 0 0 2px solid grey;
-  font-size: 1.2rem;
-  font-weight: 500;
-  cursor: pointer;
+.filter-container .filter-btn:focus{
+  outline: 2px solid rgba(255,0,0,0.25);
 }
 section {
   width: 50%;
@@ -208,6 +198,29 @@ p {
   gap: 10px;
   padding: 0 10px;
   font-size: 0.95rem;
+}
+
+.complete-toggle {
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  border: 1px solid rgba(0,0,0,0.15);
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-right: 8px;
+}
+
+.card.completed {
+  opacity: 0.75;
+}
+
+.card.completed p {
+  text-decoration: line-through;
+  opacity: 0.9;
 }
 
 .card.easy {
