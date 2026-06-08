@@ -86,8 +86,9 @@ input:focus {
 }
 .filter-container{
   width: 100%;
+  justify-content: center;
   display:flex;
-  gap: 10px;
+  gap: 20px;
   margin-top: 20px;
 }
 .filter-container .filter-btn{
@@ -110,18 +111,19 @@ input:focus {
   outline: 2px solid rgba(255,0,0,0.25);
 }
 section {
-  width: 50%;
+  width:60%;
   height: auto;
   display: grid;
   background: none;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   justify-content: center;
   margin-top: 15px;
   gap: 15px;
 }
 .card {
   width: 100%;
-  min-height: 50px;
+  height: 150px;
+  max-width: 500px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -132,14 +134,18 @@ section {
   border-radius: 10px;
   box-shadow: 0 0 5px gray;
   color: white;
-  font-weight: 500;
-  gap: 30px;
+  font-size: 12px;
+  font-weight: 300;
+  gap: 10px;
 }
 .div-holder {
   width: 100%;
   display: flex;
+  justify-content: space-between;
   padding-left: 10px;
-
+}
+.duetime{
+  font-size: 12px;
 }
 .footer {
   width: 100%;
@@ -149,7 +155,7 @@ section {
   margin-top: 10px;
 }
 p {
-  font-size: 5rem;
+  font-size: 1rem;
   font-weight: 600;
   text-decoration: none;
 }
@@ -333,7 +339,7 @@ p {
   right: 0;
   bottom: 0;
   width: 100%;
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   padding: 0;

@@ -48,6 +48,7 @@ function buildTodoCard(todo) {
       }else{
         dueTexted =`Overdue by ${Math.abs(diffDays)} day(s)`
       }
+      dueText.classList.add("duetime")
       dueText.textContent = dueTexted;
       infoRow.appendChild(dueText);
     }
@@ -71,7 +72,7 @@ function buildTodoCard(todo) {
       levelText.append(level.charAt(0).toUpperCase() + level.slice(1));
       levelText.style.display ="flex";
       levelText.style.alignItems="center";
-      levelText.style.gap="12px";
+      levelText.style.gap="10px";
       infoRow.appendChild(levelText);
     }
 
