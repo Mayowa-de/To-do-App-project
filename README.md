@@ -58,4 +58,4 @@ Right Click -> Open with Live Server
 - Type in the search box to filter cards by title (search respects the active filter).
 - Tasks are stored in Local Storage and will remain after page reload.
 
-If you'd like, I can add features such as persisting the active filter/search across reloads, or exporting/importing tasks.
+We love to turn it to fullstack in the future 😊
