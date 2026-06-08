@@ -180,7 +180,7 @@ export function showEmptyState() {
   emptyState.classList.add("emptyState");
 
   const emptyMessage = document.createElement("p");
-  emptyMessage.classList.add= "emptyP";
+  emptyMessage.classList.add("emptyP");
   emptyMessage.textContent = "No tasks added yet";
   emptyState.appendChild(emptyMessage);
 
