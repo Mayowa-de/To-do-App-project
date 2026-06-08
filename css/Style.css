@@ -6,10 +6,60 @@
 body {
   width: 100%;
   min-height: 100vh;
+  display: flex;
   background: #efe9e0;
-  background-repeat: no-repeat;
-  background-size: cover;
   font-family: "Montserrat", sans-serif;
+
+}
+aside{
+  width: 25%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+  padding: 20px;
+  background: white;
+}
+.side-bar{
+  width: 100%;
+  height: auto;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  
+}
+.side-bar ul{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  list-style: none;
+  gap: 24px;
+}
+.side-bar ul li{
+  position: relative;
+  display: flex;
+  gap: 10px;
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
+  z-index: 500;
+}
+.side-bar ul li:last-child{
+  position: absolute;
+  bottom: 10px;
+}
+.side-bar ul li::after{
+  position: absolute;
+  content: "";
+  width: 100%;
+  height:30px;
+
+  transition: background 0.3s ease;
+}
+.side-bar ul li::after + :hover{
+    background: teal;
+   color: white;
 }
 main {
   width: 100%;
@@ -17,7 +67,7 @@ main {
   align-items: center;
   display: flex;
   flex-direction: column;
-  margin-top: 35px;
+  margin-top: 10px;
   gap: 24px;
 }
 h1 {
@@ -110,8 +160,12 @@ input:focus {
 .filter-container .filter-btn:focus{
   outline: 2px solid rgba(255,0,0,0.25);
 }
+.filter-container .filter-btn:hover{
+  background-color: red;
+  color: white;
+}
 section {
-  width:60%;
+  width:90%;
   height: auto;
   display: grid;
   background: none;
@@ -355,15 +409,8 @@ p {
   gap: 20px;
   padding: 8px 0;
   margin: 0;
-  /* background-color: #fff; */
 }
 
 .footer-list .list-container li {
   list-style: none;
-}
-.curve1{
-  display:none;
-}
-.curve2{
-  display:none;
 }

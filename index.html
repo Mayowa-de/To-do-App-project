@@ -18,25 +18,30 @@
     ></script>
   </head>
   <body>
-    <main>
-       <aside>
+    <aside>
       <h1>Scheduler App</h1>
 
       <nav class="side-bar">
         <ul>
-          <li>Home</li>
-          <li>Tasks</li>
-          <li>Progress</li>
-          <li>Preference</li>
-          <li>Settings</li>
+          <li><i class="fa-solid fa-house"></i> Home</li>
+          <li><i class="fa-solid fa-list-check"></i> Tasks</li>
+          <li><i class="fas fa-line-chart"></i> Progress</li>
+          <li><i class="fa-solid fa-user-cog"></i> Preference</li>
+          <li><i class="fas fa-gear"></i> Settings</li>
+          <li>Log Out</li>
         </ul>
       </nav>
-       </aside>
+    </aside>
+    <main>
       <div class="content">
         <div class="input-container">
-        <input type="text" class="search-input" placeholder="Search tasks by title" />
-        <i class="fas fa-search" id="search-icon"></i>
-      </div>
+          <input
+            type="text"
+            class="search-input"
+            placeholder="Search tasks by title"
+          />
+          <i class="fas fa-search" id="search-icon"></i>
+        </div>
         <button id="add-button">+ Add Task</button>
       </div>
 
@@ -65,7 +70,7 @@
         <h2>Add Task Details</h2>
         <label for="title">
           Title
-          <input type="text" id="input" placeholder="Enter a title">
+          <input type="text" id="input" placeholder="Enter a title" />
         </label>
         <label for="due date">
           Due date
