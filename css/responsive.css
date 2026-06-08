@@ -3,6 +3,9 @@
     width: 100%;
     padding: 10px;
   }
+  main {
+    margin-bottom: 0;
+  }
   .content {
     width: 100%;
     display: flex;
@@ -30,6 +33,7 @@
     flex-direction: column;
     justify-content: center;
     margin-top: 5px;
+    margin-bottom: 50px;
     gap: 10px;
   }
   .card {
@@ -63,4 +67,70 @@
   .delete-icon {
     font-size: 18px;
   }
+  .footer-list {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 40;
+    font-weight: 600;
+  }
+  .list-container {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: white;
+    left: 0;
+    right: 0;
+    padding: 10px 0;
+  }
+
+  .list-container li {
+    list-style: none;
+    cursor: pointer;
+    display:flex;
+    align-items:center;
+    gap:5px;
+  }
+  .list-container li:nth-child(2) {
+    width: 80px;
+    height: 80px;
+    background-color: #5c899d;
+    color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -20px;
+    border: 2px solid white;
+    border-radius: 50%;
+    box-shadow: 0 0 3px grey;
+  }
+  /* .curve1 {
+    position: absolute;
+    display: flex;
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    border: none;
+    margin-top:-40px;
+    bottom: 100px;
+    left: 100px;
+  }
+  .curve2 {
+    position: absolute;
+    display: flex;
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    border: none;
+    border-radius: 50%;
+  } */
 }
