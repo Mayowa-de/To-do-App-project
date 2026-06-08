@@ -54,7 +54,6 @@ aside{
   content: "";
   width: 100%;
   height:30px;
-
   transition: background 0.3s ease;
 }
 .side-bar ul li::after + :hover{
@@ -220,6 +219,10 @@ p {
   border-radius: 10px;
   cursor: pointer;
   font-weight: 600;
+}
+.emptyP{
+  font-size:15px;
+  font-weight:600;
 }
 .errorMessage {
   width: 100%;
