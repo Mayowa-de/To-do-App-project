@@ -80,6 +80,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color:white;
     z-index: 40;
     font-weight: 600;
   }
@@ -90,7 +91,6 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: white;
     box-shadow: 0 0 3px grey;
     left: 0;
     right: 0;
