@@ -12,7 +12,6 @@
     display: flex;
     flex-direction: column;
     gap: 15px;
-    margin-top: -100px;
   }
   aside{
     display: none;
@@ -36,7 +35,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-top: 5px;
+    margin-top: 10px;
     margin-bottom: calc(65px + 10px);
     gap: 10px;
   }
@@ -54,7 +53,11 @@
     color: white;
     font-weight: 500;
     font-size: 12px;
-    gap: 30px;
+    gap: 15px;
+  }
+  .card-info{
+    display: flex;
+
   }
   .div-holder {
     width: 100%;
@@ -64,8 +67,8 @@
     margin-top: 10px;
   }
   p {
-    font-size: 10px;
-    font-weight: 100;
+    font-size: 1.5rem;
+    font-weight: 500;
     text-decoration: none;
   }
   .delete-icon {
