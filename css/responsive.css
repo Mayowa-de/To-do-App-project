@@ -33,7 +33,7 @@
     width: 100%;
     height: auto;
     display: grid;
-    grid-template-column: 1fr;
+    grid-template-columns: 1fr;
     justify-content: center;
     margin-top: 10px;
     margin-bottom: calc(65px + 10px);
