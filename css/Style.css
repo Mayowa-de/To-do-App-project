@@ -49,7 +49,7 @@ aside{
 }
 .side-bar ul li:last-child{
   position:fixed;
-  bottom: 10px;
+  bottom: 30px;
   line-height:0;
 }
 .side-bar ul li::after{
