@@ -41,7 +41,7 @@ aside{
   display: flex;
   align-items:center;
   gap: 10px;
-  line-height:100;
+  line-height:20;
   font-size: 20px;
   font-weight: 600;
   cursor: pointer;
