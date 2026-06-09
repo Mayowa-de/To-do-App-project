@@ -42,8 +42,8 @@
   .card {
     width: 100%;
     min-height: 150px;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-column: 1fr;
     align-items: center;
     justify-content: center;
     padding: 20px 10p 10px;
