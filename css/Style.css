@@ -67,9 +67,7 @@ aside{
 }
 .side-bar ul li:hover::after{
     background: teal;
-}
-.side-bar ul li::after{
-  color:white;
+    color:white;
 }
 main {
   width: 100%;
