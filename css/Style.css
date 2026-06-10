@@ -16,9 +16,14 @@ aside{
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  gap: 5rem;
+  gap: 3rem;
   padding: 20px;
   background: white;
+  box-shadow: 0 0 2px gray;
+}
+.title{
+  width: 100%;
+  display: flex;
 }
 .side-bar{
   width: 100%;
@@ -41,7 +46,7 @@ aside{
   display: flex;
   align-items:center;
   gap: 10px;
-  line-height:5;
+  line-height:3;
   font-size: 20px;
   font-weight: 600;
   cursor: pointer;
