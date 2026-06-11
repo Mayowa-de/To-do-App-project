@@ -80,7 +80,7 @@
     position: fixed;
     left: 0;
     right: 0;
-    bottom: 20px;
+    bottom: 15px;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -117,7 +117,7 @@
     color: white;
   }
   .list-container li i {
-    font-size: 24px;
+    font-size: 3rem !important;
   }
   .list-container li:nth-child(3) {
     width: 80px;
