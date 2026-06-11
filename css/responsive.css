@@ -119,6 +119,21 @@
   .list-container li i {
     font-size: 3rem !important;
   }
+  .icon{
+    font-size: 1.5rem;
+  }
+  .badge {
+    position: absolute;
+    top: 17px;
+    right: 13px;
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    border-radius: 50%;
+    display: flex;
+    border: 1px solid white;
+    box-shadow: 0 0 2px gray;
+  }
   .list-container li:nth-child(3) {
     width: 80px;
     height: 80px;
