@@ -3,11 +3,11 @@
     width: 100%;
     padding: 10px;
   }
-  .side-bar ul li{
+  .side-bar ul li {
     line-height: 5;
   }
   main {
-    margin-top:10px;
+    margin-top: 10px;
     margin-bottom: 0;
   }
   .content {
@@ -16,7 +16,7 @@
     flex-direction: column;
     gap: 15px;
   }
-  aside{
+  aside {
     display: none;
   }
   input {
@@ -58,9 +58,8 @@
     font-size: 12px;
     gap: 35px;
   }
-  .card-info{
+  .card-info {
     display: flex;
-
   }
   .div-holder {
     width: 100%;
@@ -81,12 +80,13 @@
     position: fixed;
     left: 0;
     right: 0;
-    bottom: 0;
+    bottom: 20px;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color:white;
+    padding: 5px;
+    margin-right: 20px;
     z-index: 40;
     font-weight: 600;
   }
@@ -99,6 +99,11 @@
     align-items: center;
     box-shadow: 0 0 3px grey;
     left: 0;
+    background: rgba(20, 22, 35, 0.35);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 20px;
+    border: none;
     right: 0;
     padding: 10px 0;
   }
@@ -106,11 +111,15 @@
   .list-container li {
     list-style: none;
     cursor: pointer;
-    display:flex;
-    align-items:center;
-    gap:5px;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    color: white;
   }
-  .list-container li:nth-child(2) {
+  .list-container li i {
+    font-size: 24px;
+  }
+  .list-container li:nth-child(3) {
     width: 80px;
     height: 80px;
     background-color: #5c899d;

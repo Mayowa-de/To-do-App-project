@@ -14,16 +14,18 @@ body {
 aside{
   width: 25%;
   min-height: 100vh;
-  padding:20px;
+  padding:0px;
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 2rem;
   background: white;
   box-shadow: 0 0 2px gray;
 }
 .title{
   width: 100%;
   display: flex;
+  padding: 5px;
+  margin-top: 10px;
 }
 .side-bar{
   width: 100%;
@@ -31,6 +33,7 @@ aside{
   justify-content: center;
   align-items: center;
   display: flex;
+  padding: 5px 5px 0 5px;
   
 }
 .side-bar ul{
@@ -40,7 +43,7 @@ aside{
   flex-direction: column;
   list-style: none;
   gap: 12px;
-  padding:20px;
+  padding:0px;
 }
 .side-bar ul li{
   position: relative;
@@ -53,25 +56,20 @@ aside{
   font-weight: 600;
   cursor: pointer;
   z-index: 1;
+  transition: bac;
 }
 .side-bar ul li:last-child{
   position:fixed;
+  width:205px;
   bottom: 30px;
   line-height:0;
 }
-.side-bar ul li::after{
-  position: absolute;
-  content: "";
-  width: 100%;
-  height:30px;
-  color:white;
-  z-index:-1;
-  transition: background 0.3s ease;
-}
-.side-bar ul li:hover::after{
-    background: teal;
+
+.side-bar ul li:hover, li.active{
+     background:#5c899d ;
     color:white;
 }
+
 main {
   width: 100%;
   justify-content: flex-start;
